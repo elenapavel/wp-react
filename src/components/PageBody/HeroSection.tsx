@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Training } from "./Training";
+import { ThemeContext } from "../../App";
 
-import { data } from "../../data/experiences";
+import { ColumnsCyan } from "../../icons/shapes";
+import clsx from "clsx";
 
 export const HeroSection = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="flex w-full h-screen bg-secondary-light px-40 pb-40 pt-60">
-      <div className="flex flex-col justify-between">
+    <div className="flex w-full min-h-screen bg-black px-40 pb-40 pt-60 relative flex-wrap items-center">
+      <div className="absolute right-0 bottom-0 w-2/5 -mb-px">
+        <ColumnsCyan />
+      </div>
+      <div className="flex flex-col justify-between relative">
         <div className="w-2/3">
-          <h1 className="text-6xl font-bold mb-14 bg-gradient-to-r from-primary to-black inline-block text-transparent bg-clip-text">
-            Susținere psiho emoțională
+          <h1 className={clsx("text-6xl mb-14  max-w-min", `text-${theme}`)}>
+            Dezvoltare Personală Conștientă
           </h1>
           <p className="text-2xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut
-            fermentum nulla, vel ultrices arcu. Nunc nisl leo, congue eget sem
-            vel, sodales cursus massa. Integer iaculis velit eu turpis egestas
-            feugiat ut non elit.
+            Un training complex format din 3 etape unite prin aceeași viziviune-
+            noi în trei ipostaze ale vieții (în raport cu noi înșine, cu
+            ceilalți și cu lumea în care traim). Acest training pune la
+            dispoziție informații, tehnici și strategii pe care le poți integra
+            în viața ta, pentru a o îmbunătăți, iar toate sunt livrate ludic,
+            practic, experiențial, fiind utilizate metode moderne de predare
+            (for real!).
           </p>
-        </div>
-        <div className="flex">
-          {data.map((experience) => (
-            <Training
-              className="bg-gradient-to-br bg-size-200 bg-pos-0 hover:bg-pos-100 from-secondary via-accent to-secondary transition-all duration-300 mr-10"
-              level={experience.level}
-              description={experience.description}
-              total={data.length}
-            />
-          ))}
         </div>
       </div>
     </div>

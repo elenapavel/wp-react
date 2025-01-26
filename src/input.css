@@ -6,6 +6,27 @@
   h1,
   h2,
   h3 {
-    @apply !leading-snug;
+    @apply font-extrabold tracking-tight !leading-none;
+  }
+
+  h1 {
+    @apply uppercase;
+  }
+
+  html {
+    @apply tracking-normal text-white font-medium bg-black !leading-normal;
+  }
+
+  @font-face {
+    font-family: "Brother";
+    font-weight: 500;
+    src: url("/wp-content/uploads/2024/10/Brother1816-Medium.ttf")
+      format("truetype");
+  }
+  @font-face {
+    font-family: "Brother";
+    font-weight: 800;
+    src: url("/wp-content/uploads/2024/10/Brother1816-ExtraBold.ttf")
+      format("truetype");
   }
 }

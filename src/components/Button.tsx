@@ -4,59 +4,25 @@ import clsx from "clsx";
 export const Button = ({
   children,
   onClick,
-  type = "outline",
-  color = "primary",
+  type = "underline",
+  color = "white",
 }: {
   onClick: () => void;
-  type?: "underline" | "filled" | "outline" | "ghost";
-  color?: "primary" | "secondary" | "secondary-light" | "accent";
+  type?: "underline" | "filled";
+  color?: "white" | "black" | "cyan" | "pink" | "purple";
 } & PropsWithChildren) => {
   return (
     <div
       className={clsx(
+        "inline-block cursor-pointer font-extrabold",
         {
-          "border-2 rounded-full p-2 text-primary tracking-wide font-bold transition-colors duration-300":
-            type === "outline",
-          'tracking-wide font-bold after:mt-1 relative after:absolute after:left-0 after:block after:h-[2px] after:w-0 after:transition-all after:content-[""] hover:after:w-full':
+          'after:mt-1 relative inline-block transition-all after:absolute after:left-0 after:block after:h-[2px] after:w-0 after:transition-all after:content-[""] hover:after:w-full':
             type === "underline",
-          "font-bold rounded-full py-1 px-6 tracking-wide transition-colors duration-300":
-            type === "filled",
-          "tracking-wide font-bold p-2 transition-colors duration-300 rounded-full":
-            type === "ghost",
-          "border-primary  hover:border-primary/30":
-            type === "outline" && color === "primary",
-          "border-secondary  hover:border-secondary/30":
-            type === "outline" && color === "secondary",
-          "border-secondary-light  hover:border-secondary-light/30":
-            type === "outline" && color === "secondary-light",
-          "border-accent  hover:border-accent/30":
-            type === "outline" && color === "accent",
-          "text-primary after:bg-primary":
-            type === "underline" && color === "primary",
-          "text-secondary after:bg-secondary":
-            type === "underline" && color === "secondary",
-          "text-secondary-light after:bg-secondary-light":
-            type === "underline" && color === "secondary-light",
-          "text-accent after:bg-accent":
-            type === "underline" && color === "accent",
-          "bg-primary text-secondary-light hover:bg-primary/80":
-            type === "filled" && color === "primary",
-          "bg-secondary text-primary hover:bg-secondary/80":
-            type === "filled" && color === "secondary",
-          "bg-secondary-light text-primary hover:bg-secondary-light/80":
-            type === "filled" && color === "secondary-light",
-          "bg-accent text-primary hover:bg-accent/80":
-            type === "filled" && color === "accent",
-          "text-primary hover:bg-secondary/20":
-            type === "ghost" && color === "primary",
-          "text-secondary hover:bg-primary/20":
-            type === "ghost" && color === "secondary",
-          "text-secondary-light hover:bg-primary/20":
-            type === "ghost" && color === "secondary-light",
-          "text-accent hover:bg-primary/20":
-            type === "ghost" && color === "accent",
         },
-        "inline-block cursor-pointer"
+        type === "filled" &&
+          `bg-${color} text-white p-2 relative hover:after:animate-borderTestTop after:absolute after:top-[2px] after:left-[2px] after:w-0 after:h-0 after:bg-transparent after:border-[2px] after:content-[""] after:border-transparent hover:before:animate-borderTestBottom before:absolute before:bottom-[2px] before:right-[2px] before:w-0 before:h-0 before:bg-transparent before:border-[2px] before:content-[""] before:border-transparent`,
+        type === "underline" &&
+          `text-${color} after:bg-${color} active:text-${color}`
       )}
       onClick={onClick}>
       <div className="flex items-center h-full">

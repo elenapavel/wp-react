@@ -1,38 +1,34 @@
-import React, { useState } from "react";
-import { TrainingDetails } from "./TrainingDetails";
+import React from "react";
+import { Button } from "../../Button";
+import { DiamondsCyan } from "../../../icons/shapes";
 
 export const Training = ({
   level,
-  total,
+  name,
   description,
   className,
 }: {
   level: number;
+  name: string;
   total: number;
   description: string;
   className: string;
-}) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  return (
-    <>
-      <div
-        onClick={() => {
-          setIsOpen(true);
-        }}
-        className={`w-60 h-32 flex justify-center items-center text-white rounded-lg cursor-pointer ${className}`}>
-        <h3 className="text-3xl font-bold">Nivel {level}</h3>
+}) => (
+  <div
+    className={`min-w-60 w-1/3 text-white border-cyan border-[6px] bg-black relative ${className}`}>
+    <div className="absolute left-0 bottom-0 min-w-20 w-1/5 -mb-px">
+      <DiamondsCyan />
+    </div>
+    <div className="flex flex-wrap relative h-full flex-col">
+      <h3 className="text-3xl font-extrabold w-full mb-5 self-start">
+        Nivel {level} - {name}
+      </h3>
+      <p className="grow">{description}</p>
+      <div className="w-full flex justify-end mt-5 self-end">
+        <Button onClick={() => console.log("vezi detalii", level)} color="cyan">
+          Unde si cand?
+        </Button>
       </div>
-      {isOpen ? (
-        <TrainingDetails
-          total={total}
-          level={level}
-          description={description}
-          onClose={() => {
-            setIsOpen(false);
-          }}
-        />
-      ) : null}
-    </>
-  );
-};
+    </div>
+  </div>
+);

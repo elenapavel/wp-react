@@ -45,14 +45,14 @@ export const TrainingDetails = ({
         <div className="mt-12 mx-12 relative">
           <div className="absolute right-0 top-0" onClick={onClose}>
             <Button
-              type="ghost"
+              type="underline"
               onClick={() => {
                 console.log("detalii");
               }}>
               <Close size={12} />
             </Button>
           </div>
-          <h2 className="text-4xl font-bold">Nivel {level}</h2>
+          <h2 className="text-4xl font-extrabold">Nivel {level}</h2>
           <div
             className={`border-b-secondary border-b-8 mt-6 rounded`}
             style={{ width: `calc(100%/${total}*${level})` }}></div>

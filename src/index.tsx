@@ -6,4 +6,4 @@ import { App } from "./App";
 const domNode = document.getElementById("app");
 const root = domNode ? createRoot(domNode) : null;
 
-root?.render(<App />);
+root?.render(<App theme="purple" />);
